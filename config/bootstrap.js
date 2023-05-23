@@ -24,8 +24,8 @@ module.exports.bootstrap = async function() {
   //
 
   /**Seeding the user in db  */
-  Users.findOne({"email":"amit@yopmail.com"}).then(async user=>{
-    if(!user){
+  Users.find({}).then(async user=>{
+    if(user.length == 0){
       await Users.createEach([
         { email: 'amit@yopmail.com', firstName: 'Amit', lastName: 'Kumar', status:'active',password:'amit@17231',isVerified:'Y',date_verified: new Date(), role:'admin' },
         { email: 'user@yopmail.com', firstName: 'Amit', lastName: 'Kumar', status:'active',password:'amit@17231',isVerified:'Y',date_verified: new Date(), role:'user' }

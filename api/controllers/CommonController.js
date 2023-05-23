@@ -18,20 +18,7 @@ generateName = function () {
 };
 const axios = require('axios');
 
-setInterval(() => {
-  axios.get('https://vaulted-leeward-guitar.glitch.me/dummy')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });
-}, 50000);
+
 module.exports = {
 
   uploadImage: async (req, res) => {
