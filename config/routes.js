@@ -52,6 +52,7 @@ module.exports.routes = {
   'post /upload/image':'CommonController.uploadImage',
   'put /change/status':'CommonController.changeStatus',
   'delete /delete':'CommonController.commonDelete',
+  'get /dummy':'CommonController.continousHit',
   
 
 
