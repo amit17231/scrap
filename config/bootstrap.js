@@ -48,8 +48,8 @@ module.exports.bootstrap = async function() {
   //       "gmail.com", 
   //       "googlemail.com"
   //   ],
-  //   "user" : "",
-  //   "pass" : ""})
+  //   "user" : "amitkjcsoftwaresolution@gmail.com",
+  //   "pass" : "iqzipnrnnuvgglvv"})
   // }
   
   // ```
