@@ -37,20 +37,20 @@ module.exports.bootstrap = async function() {
 
   /**Seeding SMTP Detail into db */
 
-  if(await Smtp.count() == 0){
-    var smtp = await Smtp.create({"service" : "Gmail",
-    "host" : "smtp.gmail.com",
-    "port" : 587,
-    "debug" : true,
-    "sendmail" : true,
-    "requiresAuth" : true,
-    "domains" : [ 
-        "gmail.com", 
-        "googlemail.com"
-    ],
-    "user" : "",
-    "pass" : ""})
-  }
+  // if(await Smtp.count() == 0){
+  //   var smtp = await Smtp.create({"service" : "Gmail",
+  //   "host" : "smtp.gmail.com",
+  //   "port" : 587,
+  //   "debug" : true,
+  //   "sendmail" : true,
+  //   "requiresAuth" : true,
+  //   "domains" : [ 
+  //       "gmail.com", 
+  //       "googlemail.com"
+  //   ],
+  //   "user" : "",
+  //   "pass" : ""})
+  // }
   
   // ```
 
