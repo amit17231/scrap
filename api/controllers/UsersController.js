@@ -867,7 +867,7 @@ forgotPasswordEmail = function (options) {
         <div class="footer" style="` +
     style.footer +
     `">
-        &copy 2022 Event Hub  All rights reserved.
+        &copy 2023  All rights reserved.
         </div>
       </div>`;
 
@@ -979,7 +979,7 @@ addUserEmail = function (options) {
     style.m0 +
     style.mb3 +
     style.textCenter +
-    `margin-bottom:20px;font-weight: 600">Your account is created on Event Hub <br>
+    `margin-bottom:20px;font-weight: 600">Your account is created on property <br>
             
             </p>
             <p style="` +
@@ -1011,7 +1011,7 @@ addUserEmail = function (options) {
         <div class="footer" style="` +
     style.footer +
     `">
-        &copy 2021 Event Hub  All rights reserved.
+        &copy 2023 All rights reserved.
         </div>
       </div>`;
 
