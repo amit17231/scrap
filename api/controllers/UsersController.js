@@ -972,8 +972,7 @@ addUserEmail = function (options) {
     style.m0 +
     style.mb3 +
     style.textCenter +
-    `">Hello ` +
-    firstName +
+    `">Hello ` +firstName +
     `</h5>
             <p style="` +
     style.m0 +
