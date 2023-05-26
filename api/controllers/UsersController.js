@@ -979,7 +979,7 @@ addUserEmail = function (options) {
     style.mb3 +
     style.textCenter +
     `margin-bottom:20px;font-weight: 600">Your account is created on property <br>
-            
+          
             </p>
             <p style="` +
     style.m0 +
