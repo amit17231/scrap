@@ -52,7 +52,18 @@ module.exports.routes = {
   'post /upload/image':'CommonController.uploadImage',
   'put /change/status':'CommonController.changeStatus',
   'delete /delete':'CommonController.commonDelete',
-  'get /dummy':'CommonController.continousHit',
+  // 'get /dummy':'CommonController.continousHit',
+
+  /** */
+
+  // 'get /scrap':'ScrapController.scrapPropertyGruru'
+
+  /**Property Routes */
+
+  'post / property':"PropertyController.addProperty",
+  'get / property':"PropertyController.getProperties",
+  'put / property':"PropertyController.updateProperty",
+  'get / property':"PropertyController.propertyDetail",
   
 
 
