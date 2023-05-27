@@ -45,7 +45,7 @@ module.exports = {
     },
 
     location:{
-      typr:"json"
+      type:"json"
     },
     bedrooms:{
       type:"number"
