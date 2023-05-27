@@ -30,11 +30,9 @@ module.exports = {
 
 
     getProperties: async (req, res) => {
-        console.log("In Get all user");
+        console.log("In Get all property");
         try {
           var search = req.param('search');
-          var role = req.param('role');
-          var isDeleted = req.param('isDeleted');
           var page = req.param('page');
           if (!page) {
             page = 1
@@ -45,18 +43,18 @@ module.exports = {
           }
           var skipNo = (page - 1) * count;
           var query = {};
-          // if (search) {
-          //   query.or = [
-          //     { fullName: { $regex: search, '$options': 'i' } },
-          //     { email: { $regex: search, '$options': 'i' } },
-          //     { name: { $regex: search, '$options': 'i' } }
-          //   ]
-          // }
+        //   if (search) {
+        //     query.or = [
+        //       { fullName: { $regex: search, '$options': 'i' } },
+        //       { email: { $regex: search, '$options': 'i' } },
+        //       { name: { $regex: search, '$options': 'i' } }
+        //     ]
+        //   }
     
     
           query.isDeleted = false
     
-    
+          console.log(query,"----")
           const total = await Property.count(query)
           const data = await Property.find(query).skip(skipNo).limit(count)
           return res.status(200).json({
