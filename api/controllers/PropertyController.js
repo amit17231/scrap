@@ -21,7 +21,7 @@ module.exports = {
 
             return res.status(200).json({
                 success:true,
-                created
+                created:created,
                 message:"Property added successfully."
             })
         }catch(err){
