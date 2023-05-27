@@ -17,10 +17,11 @@ module.exports = {
                 data.location = [data.lat,data.lng]
             }
 
-            const created = Property.create(data)
+            const created = Property.create(data).fetch()
 
             return res.status(200).json({
                 success:true,
+                created
                 message:"Property added successfully."
             })
         }catch(err){
