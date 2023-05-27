@@ -61,7 +61,7 @@ module.exports.routes = {
   /**Property Routes */
 
   'post / property':"PropertyController.addProperty",
-  'get / property':"PropertyController.getProperties",
+  'get / properties':"PropertyController.getProperties",
   'put / property':"PropertyController.updateProperty",
   'get / property':"PropertyController.propertyDetail",
   
