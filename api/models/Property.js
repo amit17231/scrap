@@ -37,7 +37,7 @@ module.exports = {
       type:"string"
     },
 
-    type:{
+    propertyType:{
       type:"string"
     },
     price:{
