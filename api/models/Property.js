@@ -32,6 +32,9 @@ module.exports = {
     pincode:{
       type:"string"
     },
+    dialCode:{
+      type:"string"
+    },
 
     contactNumber:{
       type:"string"
