@@ -16,8 +16,8 @@ module.exports = {
             if(data.lat && data.lng){
                 data.location = [data.lat,data.lng]
             }
-
-            const created = Property.create(data).fetch()
+            console.log(data)
+            const created = await Property.create(data).fetch()
 
             return res.status(200).json({
                 success:true,
