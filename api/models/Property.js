@@ -43,6 +43,10 @@ module.exports = {
     propertyType:{
       type:"string"
     },
+
+    subType:{
+      type:"string"
+    },
     price:{
       "type":"number"
     },
