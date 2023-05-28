@@ -54,6 +54,102 @@ module.exports = {
     location:{
       type:"json"
     },
+
+    district:{
+      type:"string"
+    },
+    contactPerson:{
+      type:"string"
+    },
+    contactPersonType:{
+      type:"string"
+    },
+    estateName:{
+      type:"string"
+    },
+    landArea:{
+      type:"string"
+    },
+    currentPermissible:{
+      type:"string"
+    },
+    gstRegisteredOwner:{
+      type:"string"
+    },
+    tenancy:{
+      type:"string"
+    },
+    developer:{
+      type:"string"
+    },
+    psf:{
+      type:"string"
+    },
+    floor:{
+      type:"string"
+    },
+    floorLevel:{
+      type:"string"
+    },
+    availability:{
+      type:"string"
+    },
+    furnishing:{
+      type:"string"
+    },
+    builtSize:{
+      type:"string"
+    },
+    angkorTenant:{
+      type:"string"
+    },
+    humanTraffic:{
+      type:"string"
+    },
+    electricity:{
+      type:"string"
+    },
+    listingDate:{
+      type:"string"
+    },
+    aircondition:{
+      type:"string"
+    },
+    pantry:{
+      type:"string"
+    },
+    restRoom:{
+      type:"string"
+    },
+    waterOutlet:{
+      type:"string"
+    },
+    cctv:{
+      type:"string"
+    },
+    security:{
+      type:"string"
+    },
+    clubHouse:{
+      type:"string"
+    },
+    gym:{
+      type:"string"
+    },
+    pool:{
+      type:"string"
+    },
+    buildingDetail:{
+      type:"string"
+    },
+    parking:{
+      type:"string"
+    },
+
+
+
+
+
     bedrooms:{
       type:"number"
     },
