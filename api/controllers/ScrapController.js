@@ -5,8 +5,8 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
- const axios = require('axios');
- const cheerio = require('cheerio');
+//  const axios = require('axios');
+//  const cheerio = require('cheerio');
 module.exports = {
   
     scrapPropertyGruru: async (req, res)=>{
