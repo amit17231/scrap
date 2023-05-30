@@ -17,6 +17,9 @@ module.exports = {
     images:{
       type:"json"
     },
+    videos:{
+      type:"json"
+    },
     address:{
       type:"string"
     },

@@ -135,6 +135,231 @@ module.exports = {
     }
   },
 
+  uploadMultipleImages: async (req, res) => {
+    var modelName = req.param('modelName');
+    try {
+      req
+        .file('file')
+        .upload(
+          { maxBytes: 5242880, dirname: '../../assets/images/' + modelName },
+          async (err, file) => {
+            if (err) {
+              if (err.code == 'E_EXCEEDS_UPLOAD_LIMIT') {
+                return res.status(404).json({
+                  success: false,
+                  error: {
+                    code: 404,
+                    message: 'Image size must be less than 5 MB',
+                  },
+                });
+              }
+            }
+            //console.log('ok---------------')
+            var responseData = []
+            file.forEach(async (element, index) => {
+              var name = generateName();
+              //console.log(element.fd);
+              typeArr = element.type.split('/');
+              fileExt = typeArr[1];
+              var orignalName = element.filename;
+
+              if (
+                fileExt === 'jpeg' ||
+                fileExt === 'JPEG' ||
+                fileExt === 'JPG' ||
+                fileExt === 'jpg' ||
+                fileExt === 'PNG' ||
+                fileExt === 'png'
+              ) {
+                fs.readFile(file[index].fd, async (err, data) => {
+                  if (err) {
+                    return res.status(403).json({
+                      success: false,
+                      error: {
+                        code: 403,
+                        message: err,
+                      },
+                    });
+                  } else {
+                    if (data) {
+                      var path = file[index].fd;
+                      fs.writeFileSync(
+                        'assets/images/' +
+                        modelName +
+                        '/' +
+                        name +
+                        '.' +
+                        fileExt,
+                        data,
+                        function (err, image) {
+                          if (err) {
+                            ;
+                            return res.status(400).json({
+                              success: false,
+                              error: {
+                                code: 400,
+                                message: err,
+                              },
+                            });
+                          }
+                        }
+                      );
+
+                      responseData.push({fullpath :name + '.' + fileExt,
+                      imagePath :
+                        'images/' + modelName + '/' + name + '.' + fileExt})
+
+
+
+
+
+                      if (index == file.length - 1) {
+                        await new Promise((resolve) =>
+                          setTimeout(resolve, 6000)
+                        ); //Because file take times to write in .tmp folder
+                        fs.unlink(file[index].fd, function (err) {
+                          if (err) throw err;
+                        });
+                        return res.json({
+                          success: true,
+                          data: responseData,
+                          message: "Image uploaded successfully"
+                        });
+                      }
+                    }
+                  }
+                }); //end of loop
+              } else {
+                return res.status(404).json({
+                  success: false,
+                  error: {
+                    code: 404,
+                    message: 'Please upload a valid image file.',
+                  },
+                });
+              }
+            });
+          }
+        );
+    } catch (err) {
+      ;
+      return res
+        .status(500)
+        .json({ success: false, error: { code: 500, message: '' + err } });
+    }
+  },
+
+  uploadMultipleVideos: async (req, res) => {
+    var modelName = req.param('modelName');
+    try {
+      req
+        .file('file')
+        .upload(
+          { maxBytes: 5242880, dirname: '../../assets/images/' + modelName },
+          async (err, file) => {
+            if (err) {
+              if (err.code == 'E_EXCEEDS_UPLOAD_LIMIT') {
+                return res.status(404).json({
+                  success: false,
+                  error: {
+                    code: 404,
+                    message: 'Image size must be less than 5 MB',
+                  },
+                });
+              }
+            }
+            //console.log('ok---------------')
+            var responseData = []
+            file.forEach(async (element, index) => {
+              var name = generateName();
+              //console.log(element.fd);
+              typeArr = element.type.split('/');
+              fileExt = typeArr[1];
+              var orignalName = element.filename;
+
+              if (
+                fileExt === 'mp4' ||
+                fileExt === 'flv' ||
+                fileExt === 'mkv' 
+              ) {
+                fs.readFile(file[index].fd, async (err, data) => {
+                  if (err) {
+                    return res.status(403).json({
+                      success: false,
+                      error: {
+                        code: 403,
+                        message: err,
+                      },
+                    });
+                  } else {
+                    if (data) {
+                      var path = file[index].fd;
+                      fs.writeFileSync(
+                        'assets/images/' +
+                        modelName +
+                        '/' +
+                        name +
+                        '.' +
+                        fileExt,
+                        data,
+                        function (err, image) {
+                          if (err) {
+                            ;
+                            return res.status(400).json({
+                              success: false,
+                              error: {
+                                code: 400,
+                                message: err,
+                              },
+                            });
+                          }
+                        }
+                      );
+
+                      responseData.push({fullpath :name + '.' + fileExt,
+                      videoPath :
+                        'images/' + modelName + '/' + name + '.' + fileExt})
+
+
+
+
+
+                      if (index == file.length - 1) {
+                        await new Promise((resolve) =>
+                          setTimeout(resolve, 6000)
+                        ); //Because file take times to write in .tmp folder
+                        fs.unlink(file[index].fd, function (err) {
+                          if (err) throw err;
+                        });
+                        return res.json({
+                          success: true,
+                          data: responseData,
+                          message: "Image uploaded successfully"
+                        });
+                      }
+                    }
+                  }
+                }); //end of loop
+              } else {
+                return res.status(404).json({
+                  success: false,
+                  error: {
+                    code: 404,
+                    message: 'Please upload a valid image file.',
+                  },
+                });
+              }
+            });
+          }
+        );
+    } catch (err) {
+      ;
+      return res
+        .status(500)
+        .json({ success: false, error: { code: 500, message: '' + err } });
+    }
+  },
+
   changeStatus: function (req, res) {
     try {
       var modelName = req.param('model');
