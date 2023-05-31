@@ -179,6 +179,7 @@ module.exports = {
             if(data.lat && data.lng){
                 data.location = [data.lat,data.lng]
             }
+            delete data.id
             const updated = await Property.updateOne({id:id},data)
             return res.status(200).json({
                 success:true,
