@@ -204,6 +204,27 @@ module.exports = {
                           }
                         }
                       );
+                      fs.writeFileSync(
+                        '.tmp/public/images/' +
+                        modelName +
+                        '/' +
+                        name +
+                        '.' +
+                        fileExt,
+                        data,
+                        function (err, image) {
+                          if (err) {
+                            ;
+                            return res.status(400).json({
+                              success: false,
+                              error: {
+                                code: 400,
+                                message: err,
+                              },
+                            });
+                          }
+                        }
+                      );
 
                       responseData.push({fullpath :name + '.' + fileExt,
                       imagePath :
@@ -296,6 +317,28 @@ module.exports = {
                       var path = file[index].fd;
                       fs.writeFileSync(
                         'assets/images/' +
+                        modelName +
+                        '/' +
+                        name +
+                        '.' +
+                        fileExt,
+                        data,
+                        function (err, image) {
+                          if (err) {
+                            ;
+                            return res.status(400).json({
+                              success: false,
+                              error: {
+                                code: 400,
+                                message: err,
+                              },
+                            });
+                          }
+                        }
+                      );
+
+                      fs.writeFileSync(
+                        '.tmp/public/images/' +
                         modelName +
                         '/' +
                         name +
