@@ -45,8 +45,10 @@ module.exports.routes = {
   'post /add/user': 'UsersController.addUser',
   'post /register':'UsersController.register',
   'post /user/signin':'UsersController.userSignin',
+  // 'post /users/forgot/password':'UsersController.'
 
   'get /users': 'UsersController.getAllUsers',
+  'get /verifyUser':'UsersController.verifyUser',
 
 
   /**Common Routes */

@@ -582,7 +582,7 @@ delete data.id
     Users.findOne({ id: id }).then(user => {
       if (user) {
         Users.update({ id: id }, { isVerified: 'Y' }).then(verified => {
-          return res.redirect(constant.FRONT_WEB_URL + "subscriptions")
+          return res.redirect(constant.FRONT_WEB_URL )
         })
       } else {
         return res.redirect(constant.FRONT_WEB_URL)

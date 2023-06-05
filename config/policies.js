@@ -24,7 +24,8 @@ module.exports.policies = {
      'forgotPassword':true,
      'resetPassword':true,
      'userSignin':true,
-     'register':true
+     'register':true,
+     'verifyUser':true
 
    }
 
