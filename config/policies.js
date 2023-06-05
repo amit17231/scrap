@@ -23,6 +23,9 @@ module.exports.policies = {
      'adminSignin':true,
      'forgotPassword':true,
      'resetPassword':true,
+     'userSignin':true,
+     'register':true
+
    }
 
 };

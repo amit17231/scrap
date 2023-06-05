@@ -43,6 +43,8 @@ module.exports.routes = {
   'post /forgot/password': 'UsersController.forgotPassword',
   'put /reset/password': 'UsersController.resetPassword',
   'post /add/user': 'UsersController.addUser',
+  'post /register':'UsersController.register',
+  'post /user/signin':'UsersController.userSignin',
 
   'get /users': 'UsersController.getAllUsers',
 
