@@ -27,6 +27,12 @@ module.exports.policies = {
      'register':true,
      'verifyUser':true
 
+   },
+
+   PropertyController:{
+    getProperties:true,
+    propertyDetail:true
+
    }
 
 };
