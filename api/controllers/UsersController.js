@@ -192,6 +192,10 @@ module.exports = {
    */
   userSignin: async (req, res) => {
 
+    try{
+
+   
+
     if ((!req.body.email) || typeof req.body.email == undefined) {
       return res.status(404).json({ "success": false, "error": { "code": 404, "message": constantObj.user.EMAIL_REQUIRED } });
     }
@@ -236,6 +240,13 @@ module.exports = {
 
 
     }
+  }catch(err){
+    console.log(err)
+    return res.status(400).json({
+      success:false,
+      error:{code:400,message:err.toString()}
+    })
+  }
   },
 
   /*For Get User Details
