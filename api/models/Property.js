@@ -51,7 +51,7 @@ module.exports = {
       type:"string"
     },
     price:{
-      "type":"number"
+      "type":"string"
     },
 
     location:{

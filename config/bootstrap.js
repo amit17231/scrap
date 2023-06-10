@@ -9,8 +9,7 @@
  * https://sailsjs.com/config/bootstrap
  */
 
-const smtpTransport = require("nodemailer-smtp-transport");
-const { scrapPropertyGruru } = require("../api/controllers/ScrapController");
+
 
 module.exports.bootstrap = async function() {
 
@@ -57,6 +56,17 @@ A notable feature of Principal Garden is its “80-20 garden living” concept. 
     // {name:"",address:"",description:"",contactPerson:"",price:"", images:[]},
     ]);
   }
+
+
+  var cron = require('node-cron');
+
+cron.schedule('* * * * *', () => {
+  const Controller = require('../api/controllers/ScrapController')
+console.log("cron running")
+  Controller.scrapPropertyGruru().then(data={
+
+  })
+});
 
   /**Seeding SMTP Detail into db */
 

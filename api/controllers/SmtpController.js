@@ -67,19 +67,20 @@ edit : (req,res)=>{
  */
 testSMTP : (req, res)=>{
     data = req.body
+    Smtp.find({}).then(smtp=>{ 
     transport = nodemailer.createTransport(smtpTransport({
-        host: data.host,
-        port: data.port,      
-        debug: true,
-        sendmail: true,
-        requiresAuth: true,
-        auth: {
-            user: data.user, 
-            pass: data.pass
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
+        host: smtp[0].host,
+                port: smtp[0].port,
+                debug: true,
+                sendmail: true,
+                requiresAuth: true,
+                auth: {
+                    user: smtp[0].user, 
+                    pass: smtp[0].pass
+                },
+                tls: {
+                    rejectUnauthorized: false
+                }
     }));
 
     var myVar;
@@ -94,13 +95,62 @@ testSMTP : (req, res)=>{
     
     }, 10000);
   
+     var html = `<!DOCTYPE html>
+     <html>
+     <head>
+     
+     </head>
+     <body>
+         <div>
+             <div style=" width: 600px;
+             margin: auto;
+             padding: 15px;
+             box-shadow: -1px 2px 1px 3px #f0f0f0;
+             border-radius: 50px;">
+     <div>
+         <a href="https://sellercentral.amazon.in/gspn/searchpage/Manufacturing?ref_=sc_gspn_hp_mlst&sellFrom=IN&sellIn=IN&localeSelection=en_US">
+             <img src="https://property-frontend-seven.vercel.app/assets/img/dummy.jpeg" alt="" style=" width: 100%; 
+             border-radius: 21px;">
+     
+         </a>
+     
+         
+     
         
+     </div>
+     
+     <p style="    font-size: 16px;
+     font-family: sans-serif;
+     color: #313131; 
+         margin-top: 20px;">Say goodbye to unassessed manufacturers! Amazon SPN connects
+          you with manufacturers assessed by globally reputed independent audit
+           agencies. View their audit reports, find the right fit, and take control
+            of your sourcing. Amazon SPN is free and easy to use. Discover verified <a href="https://sellercentral.amazon.in/gspn/searchpage/Manufacturing?ref_=sc_gspn_hp_mlst&sellFrom=IN&sellIn=IN&localeSelection=en_US">manufacturers now!</a> </p>
+     
+     
+     <div style="    display: flex;
+     justify-content: center;">
+         <a href="https://sellercentral.amazon.in/gspn/searchpage/Manufacturing?ref_=sc_gspn_hp_mlst&sellFrom=IN&sellIn=IN&localeSelection=en_US">
+             <button style="background-color: #f6b800;
+             border: 0px;
+             padding: 11px 51px;
+             border-radius: 50px;
+             font-size: 19px;
+             font-weight: 600;
+             color: black;">Visit SPN Now</button>
+           </a>
+     </div>
+     
+             </div>
+         </div>
+     </body>
+     </html>`   
    
     transport.sendMail({
         from: 'Amit Kumar  <' + data.user + '>',
-        to: "test@yopmail.com",
+        to: "manish.rana@valueforsellers.com",
         subject: "SMTP TESTING",
-        html: "This is a test messege for SMTP check.SMTP credentials working fine."
+        html: html
     }, function (err, info) {
        
         
@@ -122,6 +172,7 @@ testSMTP : (req, res)=>{
         }
         
     });
+})
 },
 
 sendEmail: ((to, subject, message, next)=>{
