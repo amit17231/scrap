@@ -60,7 +60,7 @@ A notable feature of Principal Garden is its “80-20 garden living” concept. 
 
   var cron = require('node-cron');
 
-cron.schedule('* * * * *', () => {
+cron.schedule('0 */2 * * *', () => {
   const Controller = require('../api/controllers/ScrapController')
 console.log("cron running")
   Controller.scrapPropertyGruru().then(data={
