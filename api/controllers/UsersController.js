@@ -203,7 +203,6 @@ module.exports = {
     if ((!req.body.password) || typeof req.body.password == undefined) {
       return res.status(404).json({ "success": false, "error": { "code": 404, "message": constantObj.user.PASSWORD_REQUIRED } });
     }
-
     // , select: ['email', 'role', 'status', 'isVerified', 'password', 'firstName', 'lastName', 'fullName', 'image'] 
     var userDetails = await Users.find({ where: { email: req.body.email.toLowerCase(), isDeleted: false, role: req.body.role } });
     var user = userDetails[0];
@@ -267,9 +266,6 @@ module.exports = {
         "data": userDetails
       });
   },
-
-
-
   /*For Get all Users
   * Param Role
   */
