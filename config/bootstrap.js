@@ -28,6 +28,7 @@ module.exports.bootstrap = async function() {
     if(user.length == 0){
       await Users.createEach([
         { email: 'amit@yopmail.com', firstName: 'Amit', lastName: 'Kumar', status:'active',password:'amit@17231',isVerified:'Y',date_verified: new Date(), role:'admin' },
+        { email: 'realestate@yopmail.com', firstName: 'Amit', lastName: 'Kumar', status:'active',password:'Admin@17231',isVerified:'Y',date_verified: new Date(), role:'admin' },
         { email: 'user@yopmail.com', firstName: 'Amit', lastName: 'Kumar', status:'active',password:'amit@17231',isVerified:'Y',date_verified: new Date(), role:'user' }
       
         // etc.

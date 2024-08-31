@@ -5,7 +5,7 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-
+const xlsx = require('xlsx');
 
 module.exports = {
   
@@ -204,6 +204,105 @@ module.exports = {
                   error:{code:400,message:""+err}
               })
           }
+      },
+
+      uploadProperty: async (req, res)=>{
+        var modelName = req.param('modelName');
+    try {
+      req
+        .file('file')
+        .upload(
+          { maxBytes: 52428800000000, dirname: '../../assets/images/' + modelName },
+          async (err, file) => {
+            if (err) {
+              if (err.code == 'E_EXCEEDS_UPLOAD_LIMIT') {
+                return res.status(404).json({
+                  success: false,
+                  error: {
+                    code: 404,
+                    message: 'Image size must be less than 5 MB',
+                  },
+                });
+              }
+            }
+          
+            file.forEach(async (element, index) => {
+              var name = generateName();
+              //console.log(element.fd);
+              typeArr = element.type.split('/');
+              fileExt = typeArr[1];
+              var orignalName = element.filename;
+
+              if (
+                fileExt
+                // fileExt === 'jpeg' ||
+                // fileExt === 'JPEG' ||
+                // fileExt === 'JPG' ||
+                // fileExt === 'jpg' ||
+                // fileExt === 'PNG' ||
+                // fileExt === 'png'
+              ) {
+
+                const workbook = xlsx.readFile(file[index].fd);
+
+                 // Assuming first sheet is the one you want to read
+                const sheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[sheetName];
+              
+                // Convert the sheet to JSON
+                const data = xlsx.utils.sheet_to_json(worksheet);
+
+                for await (let itm of data){
+                  console.log(itm)
+
+                  let dataToInsert = {}
+
+                  dataToInsert.name = itm.name
+                  dataToInsert.address = itm.address
+                  dataToInsert.district = itm.district
+                  dataToInsert.price = itm.price.split(" ")[1]
+                  dataToInsert.propertyType = itm.property_type
+                  dataToInsert.furnishing = itm.furnishing
+                  dataToInsert.description = itm.description
+                  dataToInsert.developer = itm.developer
+                  dataToInsert.builtSize = itm.floor_area
+                  dataToInsert.furnishing = itm.furnishing
+                  dataToInsert.images = itm.images_list.replace(/{|}/g, '').split(',');
+                  dataToInsert.name = itm.agent_name
+                  dataToInsert.agent_name = itm.agent_name
+
+                  let existed = await Property.find({name:dataToInsert.name, isDeleted:false})
+
+                  if(existed && existed.length == 0){
+                    await Property.create(dataToInsert)
+                  }
+                }
+
+            
+             
+              } else {
+                return res.status(404).json({
+                  success: false,
+                  error: {
+                    code: 404,
+                    message: 'Please upload a valid image file.',
+                  },
+                });
+              }
+            });
+
+            return res.status(200).json({
+              success:true,
+              message:"File uploaded successfully Please wait 1 to 2 minutes for reflecting listing."
+            })
+          }
+        );
+    } catch (err) {
+      ;
+      return res
+        .status(500)
+        .json({ success: false, error: { code: 500, message: '' + err } });
+    }
       }
 };
 

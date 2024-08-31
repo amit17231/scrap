@@ -70,6 +70,7 @@ module.exports.routes = {
   'get /properties':"PropertyController.getProperties",
   'put /property':"PropertyController.updateProperty",
   'get /property':"PropertyController.propertyDetail",
+  'post /import/property':"PropertyController.uploadProperty"
   
 
 

@@ -1,1 +1,0 @@
-{"service":"Gmail","host":"smtp.gmail.com","port":587,"debug":true,"sendmail":true,"requiresAuth":true,"domains":["gmail.com","googlemail.com"],"user":"amitkjcsoftwaresolution@gmail.com","pass":"iqzipnrnnuvgglvv","createdAt":1684939118179,"updatedAt":1684939118179,"updatedBy":null,"_id":"nLYB1KnYKkIIlqXb"}
