@@ -41,6 +41,6 @@
   "author": "Amit Kumar",
   "license": "",
   "engines": {
-    "node": "^16.9"
+    "node": "18.20.3"
   }
 }
