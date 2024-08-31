@@ -287,6 +287,18 @@ module.exports = {
       }
       var skipNo = (page - 1) * count;
       var query = {};
+
+      if (search) {
+        query.or = [
+          { fullName:  {
+            'like': '%' + search + '%'
+        } },
+          { email:  {
+            'like': '%' + search + '%'
+        } },
+        
+        ]
+      }
       // if (search) {
       //   query.or = [
       //     { fullName: { $regex: search, '$options': 'i' } },

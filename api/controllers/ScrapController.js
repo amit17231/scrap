@@ -73,7 +73,7 @@ module.exports = {
                  }
                 })
                 .catch(error => {
-                  console.log(error);
+                  // console.log(error);
                 });
 
                 
@@ -85,7 +85,7 @@ module.exports = {
 
         })
         .catch(error => {
-          console.log(error);
+          // console.log(error);
         });
 
         

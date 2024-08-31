@@ -35,6 +35,7 @@ module.exports = {
         try {
           var search = req.param('search');
           var page = req.param('page');
+          let propertyType = req.param('propertyType')
           if (!page) {
             page = 1
           }
@@ -51,10 +52,22 @@ module.exports = {
         //       { name: { $regex: search, '$options': 'i' } }
         //     ]
         //   }
+
+        if (search) {
+          query.or = [
+            { name:  {
+              'like': '%' + search + '%'
+          } },
+            { description:  {
+              'like': '%' + search + '%'
+          } },
+          
+          ]
+        }
     
     
           query.isDeleted = false
-    
+          if(propertyType){query.propertyType = propertyType}
           console.log(query,"----")
           const total = await Property.count(query)
           const data = await Property.find(query).skip(skipNo).limit(count)
