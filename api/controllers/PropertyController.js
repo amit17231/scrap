@@ -35,6 +35,7 @@ module.exports = {
         try {
           var search = req.param('search');
           var page = req.param('page');
+          var addedBy= req.param('addedBy');
           let propertyType = req.param('propertyType')
           if (!page) {
             page = 1
@@ -68,6 +69,7 @@ module.exports = {
     
           query.isDeleted = false
           if(propertyType){query.propertyType = propertyType}
+          if(addedBy){query.addedBy = addedBy}
           console.log(query,"----")
           const total = await Property.count(query)
           const data = await Property.find(query).skip(skipNo).limit(count)
