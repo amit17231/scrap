@@ -165,7 +165,9 @@ module.exports = {
       isIn: ['active', 'deactive'],
       defaultsTo: 'active'
     },
-
+    addedBy:{
+      model:"users"
+    },
     isDeleted: {
       type: 'Boolean',
       defaultsTo: false

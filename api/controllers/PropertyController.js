@@ -16,7 +16,7 @@ module.exports = {
             if(data.lat && data.lng){
                 data.location = [data.lat,data.lng]
             }
-            console.log(data)
+            data.addedBy = req.identity.id
             const created = await Property.create(data).fetch()
 
             return res.status(200).json({
@@ -209,6 +209,8 @@ module.exports = {
       uploadProperty: async (req, res)=>{
         var modelName = req.param('modelName');
     try {
+
+      console.log("in file upload")
       req
         .file('file')
         .upload(
@@ -220,7 +222,7 @@ module.exports = {
                   success: false,
                   error: {
                     code: 404,
-                    message: 'Image size must be less than 5 MB',
+                    message: 'File size must be less than 50 MB',
                   },
                 });
               }
@@ -253,7 +255,6 @@ module.exports = {
                 const data = xlsx.utils.sheet_to_json(worksheet);
 
                 for await (let itm of data){
-                  console.log(itm)
 
                   let dataToInsert = {}
 
@@ -270,7 +271,7 @@ module.exports = {
                   dataToInsert.images = itm.images_list.replace(/{|}/g, '').split(',');
                   dataToInsert.name = itm.agent_name
                   dataToInsert.agent_name = itm.agent_name
-
+                  dataToInsert.addedBy = req.identity.id
                   let existed = await Property.find({name:dataToInsert.name, isDeleted:false})
 
                   if(existed && existed.length == 0){
@@ -285,7 +286,7 @@ module.exports = {
                   success: false,
                   error: {
                     code: 404,
-                    message: 'Please upload a valid image file.',
+                    message: 'Please upload a valid file.',
                   },
                 });
               }
