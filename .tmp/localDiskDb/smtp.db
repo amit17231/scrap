@@ -1,0 +1,1 @@
+{"service":"Gmail","host":"smtp.gmail.com","port":587,"debug":true,"sendmail":true,"requiresAuth":true,"domains":["gmail.com","googlemail.com"],"user":"kamit5761@gmail.com","pass":"zahjswwfunhehtgn","createdAt":1725175026124,"updatedAt":1725175026124,"updatedBy":null,"_id":"42Af1vzTfQvANrMj"}
