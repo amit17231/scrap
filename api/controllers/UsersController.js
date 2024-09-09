@@ -53,7 +53,10 @@ module.exports = {
         req.body['date_registered'] = date;
         req.body['date_verified'] = date;
         req.body["status"] = "active";
-        req.body["role"] = "user";
+        req.body["role"] = req.body.role || "user";
+        if(req.body.role == "salesPerson"){
+          req.body.isApproved = false
+        }
 
         if (req.body.firstName && req.body.lastName) {
           req.body["fullName"] = req.body.firstName + ' ' + req.body.lastName

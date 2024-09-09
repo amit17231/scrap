@@ -69,7 +69,10 @@ module.exports = {
       type: 'string',
 
     },
-
+    isApproved: {
+      type: 'Boolean',
+      defaultsTo: true
+    },
     isDeleted: {
       type: 'Boolean',
       defaultsTo: false
