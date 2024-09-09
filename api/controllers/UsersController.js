@@ -227,6 +227,13 @@ module.exports = {
       return res.status(404).json({ "success": false, "error": { "code": 404, "message": constantObj.user.INVALID_CRED } });
 
     } else {
+
+      if(user.role == 'salesPerson' && user.isApproved == false){
+        return res.status(400).json({
+          success:false,
+          error:{code:400,message:"Please contact admin to approve your profile."}
+        })
+      }
       /**Genreating access token for the user and event organizer*/
       var token = jwt.sign({ user_id: user.id, firstName: user.firstName },
         { issuer: 'Jcsoftware', subject: user.email, audience: "L3Time" })
